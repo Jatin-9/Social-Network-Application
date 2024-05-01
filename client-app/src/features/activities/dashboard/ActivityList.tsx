@@ -6,9 +6,9 @@ import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 
 
-export default observer (function ActivityList() {
-    const {activityStore} = useStore();
-    const {deleteActivity, activitiesByDate, loading} = activityStore;
+export default observer(function ActivityList() {
+    const { activityStore } = useStore();
+    const { deleteActivity, activitiesByDate, loading } = activityStore;
     const [target, setTarget] = useState('');
 
     function handleActivityDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
@@ -28,7 +28,7 @@ export default observer (function ActivityList() {
                                 <div>{activity.city}, {activity.venue}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button as={Link} to= {`/activities/${activity.id}`}  floated='right' content='view' color='blue' />
+                                <Button as={Link} to={`/activities/${activity.id}`} floated='right' content='view' color='blue' />
                                 <Button
                                     name={activity.id}
                                     loading={loading && target === activity.id}

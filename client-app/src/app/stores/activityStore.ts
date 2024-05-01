@@ -34,10 +34,10 @@ export default class ActivityStore {
 
     loadActivity = async (id: string) => {
         let activity = this.getActivity(id);
-        if (activity) 
-            {this.selectedActivity = activity;
-                return activity;
-            }
+        if (activity) {
+            this.selectedActivity = activity;
+            return activity;
+        }
         else {
             this.setLoadingInitial(true);
             try {
@@ -69,7 +69,7 @@ export default class ActivityStore {
             this.loadingInitial = state;
         });
     };
-    
+
     createActivity = async (activity: Activity) => {
         this.loading = true;
         activity.id = uuid();
