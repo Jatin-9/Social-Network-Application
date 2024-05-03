@@ -11,10 +11,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-calendar": "^4.1.0",
     "axios": "^1.6.8",
+    "calander": "^0.0.2",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
+    "react-calendar": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
     "semantic-ui-css": "^2.5.0",
