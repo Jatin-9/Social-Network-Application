@@ -1,7 +1,11 @@
+using System.Xml.Serialization;
 using Application.Activities;
 using Application.Core;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+
 
 namespace API.Extensions
 {
@@ -26,6 +30,9 @@ services.AddCors(opt =>{
 
 services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(List.Handler).Assembly));
 services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+services.AddFluentValidationAutoValidation();
+services.AddValidatorsFromAssemblyContaining<Create>();
+
 return services;
         }
     }

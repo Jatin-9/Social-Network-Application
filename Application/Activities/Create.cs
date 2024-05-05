@@ -1,4 +1,5 @@
 using Domain;
+using FluentValidation;
 using MediatR;
 using Persistence;
 
@@ -11,6 +12,14 @@ namespace Application.Activities
             public Activity Activity {get; set;}
         }
 
+
+           public class CommandValidator  :  AbstractValidator<Command>
+        {
+            public CommandValidator() 
+            {
+                RuleFor(x => x.Activity).SetValidator(new ActivityValidtor());
+            }
+        }
         public class Handler : IRequestHandler<Command>
         {
         private readonly DataContext _context;
@@ -19,11 +28,12 @@ namespace Application.Activities
             _context = context;
             }
 
-            async Task IRequestHandler<Command>.Handle(Command request, CancellationToken cancellationToken)
+            public async Task Handle(Command request, CancellationToken cancellationToken)
             {
                 _context.Activities.Add(request.Activity);
 
                 await _context.SaveChangesAsync();
+               
             }
         }
     }
