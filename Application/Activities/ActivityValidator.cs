@@ -7,9 +7,9 @@ using FluentValidation;
 
 namespace Application.Activities
 {
-    public class ActivityValidtor : AbstractValidator<Activity>
+    public class ActivityValidator : AbstractValidator<Activity>
     {
-        public ActivityValidtor()
+        public ActivityValidator()
         {
             RuleFor(x=> x.Title).NotEmpty();
             RuleFor(x=> x.Description).NotEmpty();
