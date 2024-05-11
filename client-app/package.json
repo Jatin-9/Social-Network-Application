@@ -14,6 +14,7 @@
     "@types/react-calendar": "^4.1.0",
     "axios": "^1.6.8",
     "calander": "^0.0.2",
+    "formik": "^2.4.6",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
     "react": "^18.3.1",
