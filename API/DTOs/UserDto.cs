@@ -1,6 +1,6 @@
 namespace API.DTOs
 {
-    public class UserDtos
+    public class UserDto
     {
         public string DisplayName { get; set; }
         public string Token { get; set; }
