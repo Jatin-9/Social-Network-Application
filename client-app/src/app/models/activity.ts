@@ -9,7 +9,7 @@ export interface IActivity {
   city: string;
   venue: string;
   hostUsername: string;
-  isCancelled: string;
+  isCancelled: boolean;
   isGoing: boolean;
   isHost: boolean;
   host?: Profile;
@@ -34,7 +34,7 @@ export class Activity implements IActivity {
   city: string;
   venue: string;
   hostUsername: string = ''
-  isCancelled: string = ''
+  isCancelled: boolean = false
   isGoing: boolean = false
   isHost: boolean = false
   host?: Profile;
