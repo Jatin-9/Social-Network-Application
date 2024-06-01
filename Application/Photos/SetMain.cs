@@ -30,7 +30,7 @@ namespace Application.Photos
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _context.Users.Include(p=> p.Photos)
-                .FirstOrDefaultAsync(x=> x.UserName == request.Id);
+                .FirstOrDefaultAsync(x=> x.UserName == _userAccessor.GetUsername());
 
                 if(user == null) return null;
 
