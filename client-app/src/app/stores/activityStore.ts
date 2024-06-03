@@ -183,4 +183,7 @@ get groupedActivities() {
             runInAction(() => this.loading = false);
         }
     }
+    clearSelectedActivity =() => {
+        this.selectedActivity = undefined;
+    }
 }
