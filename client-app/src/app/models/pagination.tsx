@@ -13,6 +13,7 @@ export class PaginatedResult<T> {
         this.data = data;
         this.pagination = pagination;
     }
+    
 }
 
 export class PagingParams {

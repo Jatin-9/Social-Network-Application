@@ -66,7 +66,7 @@ export default class ActivityStore {
         params.append('pageSize', this.pagingParams.pageSize.toString());
         this.predicate.forEach((value, key) => {
             if (key === 'startDate') {
-                params.append(key, (value as Date).toISOString());
+                params.append(key, (value as Date).toISOString())
             } else {
                 params.append(key, value);
             }
@@ -106,7 +106,9 @@ export default class ActivityStore {
     }
 
     setPagination = (pagination: Pagination) => {
-        this.pagination = pagination;
+        runInAction(() => {
+            this.pagination = pagination;
+        });
     }
 
     loadActivity = async (id: string) => {

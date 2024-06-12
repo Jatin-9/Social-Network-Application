@@ -2,6 +2,8 @@ import { observer } from "mobx-react-lite";
 import Calendar from "react-calendar";
 import { Header, Menu } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+
+
 export default observer (function ActivityFilters() {
     const {activityStore :{predicate, setPredicate}} = useStore();
     return (
@@ -27,7 +29,7 @@ export default observer (function ActivityFilters() {
         <Header />
         <Calendar 
         onChange={(date) => setPredicate('startDate', date as Date)}
-        value={predicate.get('startDate' || new Date)}
+        value={predicate.get('startDate') || new Date()}
         />
         </>
     )
