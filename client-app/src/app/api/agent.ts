@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { router } from '../router/Routes';
 import { store } from '../stores/store';
 import { User, UserFormValues } from '../models/user';
-import { Photo, Profile, UserActivity } from '../models/profile';
+import { Photo, Profile } from '../models/profile';
 import { PaginatedResult } from '../models/pagination';
 
 const sleep = (delay: number) => {
@@ -13,10 +13,10 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 axios.interceptors.response.use(async response => {
-    await sleep(1000);
+    if(import.meta.env.DEV) await sleep(1000);
     const pagination = response.headers['pagination'];
     if (pagination) {
         response.data = new PaginatedResult(response.data, JSON.parse(pagination));

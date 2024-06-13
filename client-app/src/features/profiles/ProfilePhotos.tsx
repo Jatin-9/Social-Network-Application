@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { Button, Card, CardGroup, Grid, GridColumn, Header, Image, TabPane } from 'semantic-ui-react';
 import { Photo, Profile } from '../../app/models/profile';
 import { useStore } from '../../app/stores/store';
