@@ -150,20 +150,19 @@ export default class ProfileStore {
         }
     }
 
-    loadUserActivities = async (username: string, predicate?: string) => {
+    loadUserActivities = async (username: string, predicate: string) => {
         this.loadingActivities = true;
-        try {
-            const activities = await agent.Profiles.listActivities(username, predicate!);
-            runInAction(() => {
-                this.userActivities = activities;
-                this.loadingActivities = false;
-            })
-        } catch (error) {
-            console.log(error);
-            runInAction(() => {
-                this.loadingActivities = false;
-            })
-        }
+    try {
+        const activities = await agent.Profiles.listActivities(username, predicate);
+        runInAction(() => {
+            this.userActivities = activities;
+            this.loadingActivities = false;
+        });
+    } catch (error) {
+        console.error(error);
+        runInAction(() => {
+            this.loadingActivities = false;
+        });
     }
-
+};
 }

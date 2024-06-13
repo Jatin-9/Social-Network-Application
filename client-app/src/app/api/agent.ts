@@ -106,8 +106,9 @@ const Profiles = {
     updateFollowing: (username: string) => requests.post(`/follow/${username}`, {}),
     listFollowings: (username: string, predicate: string) =>
         requests.get<Profile[]>(`/follow/${username}?predicate=${predicate}`),
-    listActivities: (username: string, predicate: string) =>
-        requests.get<UserActivity[]>(`/profiles/${username}/activities? predicate=${predicate}`)
+    listActivities: async (username: string, predicate: string) => {
+        const response = await axios.get(`/profiles/${username}/activities`, { params: { predicate } });
+        return response.data;}
 }
 
 
