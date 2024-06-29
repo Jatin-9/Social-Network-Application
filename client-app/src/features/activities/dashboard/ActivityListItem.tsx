@@ -8,30 +8,31 @@ interface Props {
     activity: Activity
 }
 export default function ActivityListItem({ activity }: Props) {
-
-
     return (
-        <SegmentGroup>
+        <SegmentGroup className="segment-group">
             <Segment>
-                {activity.isCancelled &&
+                {activity.isCancelled && 
                     <Label attached='top' color='red' content='Cancelled' style={{ textAlign: 'center' }} />}
                 <ItemGroup>
                     <Item>
                         <Item.Image style={{ marginBottom: 6 }} size='tiny' circular
                             src={activity.host?.image || '/assets/user.png'} />
                         <Item.Content>
-                            <Item.Header as={Link} to={`/activities/${activity.id}`} />
-                            {activity.title}
-                            <Item.Description> Hosted by <Link to={`/profiles/${activity.host?.username}`}>{activity.host?.displayName}</Link> </Item.Description>
+                            <Item.Header as={Link} to={`/activities/${activity.id}`} className="item-header">
+                                {activity.title}
+                            </Item.Header>
+                            <Item.Description className="item-description"> 
+                                Hosted by <Link to={`/profiles/${activity.host?.username}`}>{activity.host?.displayName}</Link> 
+                            </Item.Description>
                             {activity.isHost && (
-                                <ItemDescription>
+                                <ItemDescription className="item-extra">
                                     <Label basic color='orange'>
                                         you are hosting this activity
                                     </Label>
                                 </ItemDescription>
                             )}
                             {activity.isGoing && !activity.isHost && (
-                                <ItemDescription>
+                                <ItemDescription className="item-extra">
                                     <Label basic color='green'>
                                         you are going to this activity
                                     </Label>
@@ -42,7 +43,7 @@ export default function ActivityListItem({ activity }: Props) {
                 </ItemGroup>
             </Segment>
             <Segment>
-                <span>
+                <span className="item-meta">
                     <Icon name='clock' /> {format(activity.date!, 'dd MMM yyyy h:mm aa')}
                     <Icon name='marker' /> {activity.venue}
                 </span>
@@ -51,7 +52,7 @@ export default function ActivityListItem({ activity }: Props) {
                 <ActivityListItemAttendee attendees={activity.attendees!} />
             </Segment>
             <Segment clearing>
-                <span> {activity.description} </span>
+                <span className="item-description"> {activity.description} </span>
                 <Button
                     as={Link}
                     to={`/activities/${activity.id}`}
